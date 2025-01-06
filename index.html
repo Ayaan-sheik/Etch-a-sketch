@@ -7,9 +7,31 @@
     <title>Document</title>
 </head>
 <body>
-    <div class = "container">
+
+    <div class = title>
+        Etch-a-sketch
+    </div>
+    <div class = "content">
+        <div class="controls">
+            <button class="toggleBlack">Toggle Black</button>
+            <button class="toggleRainbow">Toggle Rainbow</button>
+            <button class = "colourFill">Colour Fill</button>
+            <button class = "toggleEraser">Toggle Eraser</button>
+            <button class="toggleGridlines">Toggle Gridlines</button>
+            <div class = "gridSize">
+                <input type="range" id="slider" min="1" max="100" value="10" />
+                <p id="label"> Grid Size: 10 x 10</p>
+            </div>
+            <button class="clear">Clear</button>
+        </div>
+        <div>
+            <div class = "container">
+
+            </div>
+        </div>
         
     </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
