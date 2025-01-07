@@ -91,22 +91,44 @@ toggleRainbow.addEventListener('click',function(){
   
 
 let gridlines = document.querySelector(".toggleGridlines");
+let gridLines = true;
 
 gridlines.addEventListener('click',function(){
-    container.innerHTML = "";
+    if(gridLines){
+        container.innerHTML = "";
 
-    for(let i =0;i<size;i++){
-        const row = document.createElement("div");
-        row.classList.add("row");
-        for (let j =0;j<size;j++){
-            const grid = document.createElement("div");
-            grid.setAttribute("style","background-color:white;")
-            row.appendChild(grid);
-            grid.classList.add("grid");
-        }   
+        for(let i =0;i<size;i++){
+            const row = document.createElement("div");
+            row.classList.add("row");
+            for (let j =0;j<size;j++){
+                const grid = document.createElement("div");
+                grid.setAttribute("style","background-color:white;")
+                row.appendChild(grid);
+                grid.classList.add("grid");
+            }   
 
-        container.appendChild(row);
+            container.appendChild(row);
+        }
+        gridLines = false;
     }
+    else{
+        container.innerHTML = "";
+
+        for(let i =0;i<size;i++){
+            const row = document.createElement("div");
+            row.classList.add("row");
+            for (let j =0;j<size;j++){
+                const grid = document.createElement("div");
+                grid.setAttribute("style","background-color:white;border:1px solid black;")
+                row.appendChild(grid);
+                grid.classList.add("grid");
+            }   
+
+            container.appendChild(row);
+        }
+        gridLines = true;
+    }
+    
 }
 )
 let slider = document.querySelector("#slider");
