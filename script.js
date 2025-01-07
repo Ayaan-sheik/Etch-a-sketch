@@ -29,36 +29,54 @@ let toggleBlack = document.querySelector('.toggleBlack');
 let toggleEraser = document.querySelector(".toggleEraser");
 
 let blackbtn = false;
+let eraser = false;
 toggleBlack.addEventListener('click',function(){
     blackbtn = true;
+    eraser = false;
+    rainbow =false;
 })
 
-let eraser = false;
+
 toggleEraser.addEventListener('click',function(){
     eraser = true;
+    rainbow =false;
+    blackbtn = false;
 })
 
 let isMouseDown = false;
-
+let k =0;
 container.addEventListener("mousedown", () => (isMouseDown = true));
 container.addEventListener("mouseup", () => (isMouseDown = false));
 
 container.addEventListener('mouseover',function(event){
     if(blackbtn == true){
-        if(isMouseDown && event.target.classList.contains("grid")){
-            event.target.style.backgroundColor = "black";
-        }
+        k=1;
     }
     else if(eraser == true){
-        if(isMouseDown && event.target.classList.contains("grid")){
-            event.target.style.backgroundColor = "white";
-        }
+        k=2;
     }
     else if(rainbow == true){
-        if(isMouseDown && event.target.classList.contains("grid")){
-            event.target.style.backgroundColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
-        }
-    }   
+        k=3;
+    } 
+    
+    
+    switch (k){
+        case 1:
+            if(isMouseDown && event.target.classList.contains("grid")){
+                event.target.style.backgroundColor = "black";
+            }
+            break;
+        case 2:
+            if(isMouseDown && event.target.classList.contains("grid")){
+                event.target.style.backgroundColor = "white";
+            }
+            break;
+        case 3:
+            if(isMouseDown && event.target.classList.contains("grid")){
+                event.target.style.backgroundColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+            }
+            break;
+    }
     
 })
 
@@ -67,6 +85,8 @@ let toggleRainbow = document.querySelector('.toggleRainbow')
 let rainbow =false;
 toggleRainbow.addEventListener('click',function(){
     rainbow =true;
+    eraser = false;
+    blackbtn = false;
 })
   
 
