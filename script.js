@@ -23,28 +23,52 @@ function CreateGrid(size){
     }
 }
 
-
-
-
 CreateGrid(10);
-
-let color;
 
 let toggleBlack = document.querySelector('.toggleBlack');
 let toggleEraser = document.querySelector(".toggleEraser");
+
+let blackbtn = false;
 toggleBlack.addEventListener('click',function(){
-    color = "black";
+    blackbtn = true;
 })
 
+let eraser = false;
 toggleEraser.addEventListener('click',function(){
-    color = "white";
+    eraser = true;
 })
+
+let isMouseDown = false;
+
+container.addEventListener("mousedown", () => (isMouseDown = true));
+container.addEventListener("mouseup", () => (isMouseDown = false));
 
 container.addEventListener('mouseover',function(event){
-    if(event.target.classList.contains("grid")){
-        event.target.style.backgroundColor = color;
+    if(blackbtn == true){
+        if(isMouseDown && event.target.classList.contains("grid")){
+            event.target.style.backgroundColor = "black";
+        }
     }
+    else if(eraser == true){
+        if(isMouseDown && event.target.classList.contains("grid")){
+            event.target.style.backgroundColor = "white";
+        }
+    }
+    else if(rainbow == true){
+        if(isMouseDown && event.target.classList.contains("grid")){
+            event.target.style.backgroundColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+        }
+    }   
+    
 })
+
+let toggleRainbow = document.querySelector('.toggleRainbow')
+
+let rainbow =false;
+toggleRainbow.addEventListener('click',function(){
+    rainbow =true;
+})
+  
 
 let gridlines = document.querySelector(".toggleGridlines");
 
